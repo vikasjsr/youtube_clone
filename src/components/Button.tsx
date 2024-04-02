@@ -1,39 +1,19 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useAppSelector } from "../utils/hooks";
 
 const Button = () => {
     const buttonList: string[] = [
-        'All',
-        'Music',
-        'Gaming',
-        'News',
-        'Movies',
-        'Sports',
-        'Fashion',
-        'Food',
-        'Travel',
-        'Fitness',
-        'Education',
-        'Science',
-        'Technology',
-        'Comedy',
-        'Art',
-        'Animals',
-        'Cars',
-        'Beauty',
-        'Books',
-        'Crafts'
+        'All', 'Music', 'Gaming', 'News', 'Movies', 'Sports', 'Fashion',
+        'Food', 'Travel', 'Fitness', 'Education', 'Science', 'Technology',
+        'Comedy', 'Art', 'Animals', 'Cars', 'Beauty', 'Books', 'Crafts'
     ];
 
     const isMenuOpen = useAppSelector((state) => state.app.isMenuOpen);
-
-    const [scrollX, setScrollX] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const handleScroll = (scrollOffset: number) => {
         if (scrollRef.current) {
             scrollRef.current.scrollLeft += scrollOffset;
-            setScrollX(scrollRef.current.scrollLeft);
         }
     };
 
@@ -50,13 +30,13 @@ const Button = () => {
                 </button>
 
                 {/* Button list */}
-                <div 
-                    ref={scrollRef} 
-                    className="h-10 flex gap-2" 
+                <div
+                    ref={scrollRef}
+                    className="h-10 flex gap-2"
                     style={{
                         overflowX: 'auto',
                         scrollbarWidth: 'none', /* Firefox */
-                        
+
                     }}
                 >
                     {buttonList.map((item, index) => (
